@@ -29,10 +29,10 @@ const serial = async (
             {
                 // altere!
                 // CREDENCIAIS DO BANCO - MYSQL WORKBENCH
-                host: 'localhost',
-                user: 'insertGrupo8',
-                password: 'grupo8',
-                database: 'APIprojeto'
+                host: '10.18.36.100',
+                user: 'vinumInsertGrupo',
+                password: 'grupoAll',
+                database: 'VinumSprint3'
             }
         ).promise();
     } else if (AMBIENTE == 'producao') {
