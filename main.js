@@ -60,27 +60,10 @@ const serial = async (
         //console.log(data);
         const valores = data.split(';');
         const dht11Umidade = parseFloat(valores[0]);
-        const dht11Umidade2 = dht11Umidade + 7;
-        const dht11Umidade3 = dht11Umidade + 14;
-        const dht11Umidade4 = dht11Umidade - 7;
-        const dht11Umidade5 = dht11Umidade * 0.5;
-
         const dht11Temperatura = parseFloat(valores[1]);
-        const dht11Temperatura2 = dht11Temperatura + 2;
-        const dht11Temperatura3 = dht11Temperatura + 5;
-        const dht11Temperatura4 = dht11Temperatura - 2;
-        const dht11Temperatura5 = dht11Temperatura * 0.5;
         
         valoresDht11Umidade.push(dht11Umidade);
-        valoresDht11Umidade.push(dht11Umidade2);
-        valoresDht11Umidade.push(dht11Umidade3);
-        valoresDht11Umidade.push(dht11Umidade4);
-        valoresDht11Umidade.push(dht11Umidade5);
         valoresDht11Temperatura.push(dht11Temperatura);
-        valoresDht11Temperatura.push(dht11Temperatura2);
-        valoresDht11Temperatura.push(dht11Temperatura3);
-        valoresDht11Temperatura.push(dht11Temperatura4);
-        valoresDht11Temperatura.push(dht11Temperatura5);
 
         if (HABILITAR_OPERACAO_INSERIR) {
             if (AMBIENTE == 'producao') {
@@ -113,8 +96,8 @@ const serial = async (
                 // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
                 // >> você deve ter o aquario de id 1 cadastrado.
                 await poolBancoDados.execute(
-                    'INSERT INTO sensoresVinum (temp1, umid1, temp2, umid2, temp3, umid3, temp4, umid4, temp5, umid5, dataDHT11) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())',
-                    [dht11Temperatura, dht11Umidade, dht11Temperatura2, dht11Umidade2, dht11Temperatura3, dht11Umidade3, dht11Temperatura4, dht11Umidade4, dht11Temperatura5, dht11Umidade5]
+                    'INSERT INTO registro (temperatura, umidade, dtHora, fkSensor) VALUES (?, ?, now(), 1)',
+                    [dht11Temperatura, dht11Umidade]
                 );
                 console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura)
 
