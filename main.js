@@ -29,9 +29,9 @@ const serial = async (
             {
                 // altere!
                 // CREDENCIAIS DO BANCO - MYSQL WORKBENCH
-                host: 'localhost',
-                user: 'root',
-                password: '27150909@',
+                host: '10.18.36.100',
+                user: 'vinumInsertGrupo',
+                password: 'grupoAll',
                 database: 'VinumSprint3'
             }
         ).promise();
@@ -57,7 +57,7 @@ const serial = async (
         console.log(`A leitura do arduino foi iniciada na porta ${portaArduino.path} utilizando Baud Rate de ${SERIAL_BAUD_RATE}`);
     });
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
-        console.log("Chegou aqui");
+        //console.log(data);
         const valores = data.split(';');
         const dht11Umidade = parseFloat(valores[0]);
         const dht11Temperatura = parseFloat(valores[1]);
