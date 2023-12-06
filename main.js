@@ -58,14 +58,14 @@ const serial = async (
     });
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
         //console.log(data);
-        var valorAleatorio = parseInt(Math.random() * 8)
-        var valorAleatorio2 = parseInt(Math.random() * 10)
-        var valorAleatorio3 = parseInt(Math.random() * 15)
+        var valorAleatorio = parseInt(Math.random() * 2)
+        var valorAleatorio2 = parseInt(Math.random() * 5)
+        var valorAleatorio3 = parseInt(Math.random() * 8)
 
         const valores = data.split(';');
         const dht11Umidade = parseFloat(valores[0]);
         const dht11Temperatura = parseFloat(valores[1]);
-        const dht11Umidade2 = dht11Umidade - valorAleatorio - 10;
+        const dht11Umidade2 = dht11Umidade + valorAleatorio + 8;
         const dht11Temperatura2 = dht11Temperatura - valorAleatorio2 + 1;
         const dht11Umidade3 = dht11Umidade + valorAleatorio3;
         const dht11Temperatura3 = dht11Temperatura - valorAleatorio2;
